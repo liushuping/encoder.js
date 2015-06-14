@@ -1,4 +1,4 @@
-node.js
+encoder.js
 =======
 
 An encoding library in JavaScript
