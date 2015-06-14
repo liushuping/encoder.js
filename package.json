@@ -1,0 +1,26 @@
+{
+  "name": "encoder.js",
+  "version": "0.0.0",
+  "description": "An encoding library in JavaScript",
+  "main": "encoder.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liushuping/encoder.js"
+  },
+  "keywords": [
+    "JavaScript",
+    "Encoding",
+    "Encode",
+    "Web",
+    "HTML",
+    "URL"
+  ],
+  "author": "Shuping LIU",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liushuping/encoder.js/issues"
+  }
+}
