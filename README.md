@@ -21,6 +21,10 @@ var decoded = encoder.decodeHTML(input); //100 > 200 is incorrect
 ```
 
 ## HTML attribute encode and decode
+HTML attribute encode an input string
+```
+```
+to decode HTML attribute, use `encoder.decodeHTML`
 
 ## JavaScript encode and decode
 

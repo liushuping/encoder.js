@@ -2,18 +2,9 @@ function Encoder() {
 }
 
 Encoder.prototype.encodeHTML = function(str) {
-    var encoded = '';
-
-    if (str === undefined || str.length === 0) {
-        return encoded;
-    }
-
-    encoded = str.replace(/&/g, '&amp;');
-    encoded = encoded.replace(/</g, '&lt;');
+    var encoded = this.encodeHTMLAttr(str);
     encoded = encoded.replace(/>/g, '&gt;');
     encoded = encoded.replace(/ /g, '&nbsp;');
-    encoded = encoded.replace(/\'/g, '&#39;');
-    encoded = encoded.replace(/"/g, '&#quot;');
 
     return encoded;
 };
@@ -27,17 +18,43 @@ Encoder.prototype.decodeHTML = function(str) {
 
     decoded = str.replace(/&amp;/g, '&');
     decoded = decoded.replace(/&lt;/g, '<');
+    decoded = decoded.replace(/&#39;/g, '\'');
+    decoded = decoded.replace(/&quot;/g, '"');
     decoded = decoded.replace(/&gt;/g, '>');
     decoded = decoded.replace(/&nbsp;/g, ' ');
-    decoded = decoded.replace(/&#39;/g, '\'');
-    decoded = decoded.replace(/&#quot;/g, '"');
 
     return decoded;
 };
 
 Encoder.prototype.encodeHTMLAttr = function(str) {
-    //TODO
+    var encoded = '';
+
+    if (str === undefined || str.length === 0) {
+        return encoded;
+    }
+
+    encoded = str.replace(/&/g, '&amp;');
+    encoded = encoded.replace(/</g, '&lt;');
+    encoded = encoded.replace(/\'/g, '&#39;');
+    encoded = encoded.replace(/"/g, '&quot;');
+
+    return encoded;
 };
+
+Encoder.prototype.decodeHTMLAttr = function(str) {
+    var decoded = '';
+
+    if (str === undefined || str.length === 0) {
+        return decoded;
+    }
+
+    decoded = str.replace(/&amp;/g, '&');
+    decoded = decoded.replace(/&lt;/g, '<');
+    decoded = decoded.replace(/&#39;/g, '\'');
+    decoded = decoded.replace(/&quot;/g, '"');
+
+    return decoded;
+}
 
 Encoder.prototype.encodeJavaScript = function(str) {
     //TODO

@@ -32,10 +32,10 @@ describe('#encodeHTML', function() {
 		assert.strictEqual(encoded, 'Hello&#39;');
 	});
 
-	it('should encode " to &#quot;', function() {
+	it('should encode " to &quot;', function() {
 		var input = '"Hello"';
 		var encoded = encoder.encodeHTML(input);
-		assert.strictEqual(encoded, '&#quot;Hello&#quot;');
+		assert.strictEqual(encoded, '&quot;Hello&quot;');
 	});
 });
 
@@ -71,11 +71,50 @@ describe('#decodeHTML', function() {
 	});
 
 	it('should decode &#quot; to "', function() {
-		var input = '&#quot;Hello&#quot;';
+		var input = '&quot;Hello&quot;';
 		var decoded = encoder.decodeHTML(input);
 		assert.strictEqual(decoded, '"Hello"');
 	});
 });
+
+describe('#encodeHTMLAttr', function() {
+	it('should encode < to &lt;', function() {
+		var input = '100<200';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, '100&lt;200');
+	});
+
+	it('should not encode > to &gt;', function() {
+		var input = '200>100';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, '200>100');
+	});
+
+	it('should not encode withe space to &nbsp;', function() {
+		var input = 'one two three';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, 'one two three');
+	});
+
+	it('should encode & to &amp;', function() {
+		var input = 'A&B';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, 'A&amp;B');
+	});
+
+	it('should encode \' to &#39;', function() {
+		var input = 'Hello\'';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, 'Hello&#39;');
+	});
+
+	it('should encode " to &quot;', function() {
+		var input = '"Hello"';
+		var encoded = encoder.encodeHTMLAttr(input);
+		assert.strictEqual(encoded, '&quot;Hello&quot;');
+	});
+});
+
 
 describe('#encodeURI', function() {
 	it('should encode white space to %20', function() {
