@@ -3,6 +3,8 @@ encoder.js
 
 An encoding library in JavaScript
 
+[![build status](https://travis-ci.org/liushuping/encoder.js.svg)](https://travis-ci.org/liushuping/encoder.js.svg)
+
 ## HTML encode and decode
 HTML encode an input string
 ```
