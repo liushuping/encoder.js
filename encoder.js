@@ -13,7 +13,7 @@ Encoder.prototype.encodeHTML = function(str) {
     encoded = encoded.replace(/>/g, '&gt;');
     encoded = encoded.replace(/ /g, '&nbsp;');
     encoded = encoded.replace(/\'/g, '&#39;');
-    encoded = encoded.replace(/\"/g, '&#quot;');
+    encoded = encoded.replace(/"/g, '&#quot;');
 
     return encoded;
 };
@@ -22,15 +22,15 @@ Encoder.prototype.decodeHTML = function(str) {
     var decoded = '';
 
     if (str === undefined || str.length === 0) {
-        return encoded;
+        return decoded;
     }
 
-    dencoded = str.replace(/&amp;/g, '&');
-    dencoded = dencoded.replace(/&lt;/g, '<');
-    dencoded = dencoded.replace(/&gt;/g, '>');
-    dencoded = dencoded.replace(/&nbsp;/g, ' ');
-    dencoded = dencoded.replace(/&#39;/g, '\'');
-    dencoded = dencoded.replace(/&#quot;/g, '\"');
+    decoded = str.replace(/&amp;/g, '&');
+    decoded = decoded.replace(/&lt;/g, '<');
+    decoded = decoded.replace(/&gt;/g, '>');
+    decoded = decoded.replace(/&nbsp;/g, ' ');
+    decoded = decoded.replace(/&#39;/g, '\'');
+    decoded = decoded.replace(/&#quot;/g, '"');
 
     return decoded;
 };
