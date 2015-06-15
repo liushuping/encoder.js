@@ -4,7 +4,7 @@
   "description": "An encoding library in JavaScript",
   "main": "encoder.js",
   "scripts": {
-    "test": "npm test"
+    "test": "mocha ./test/encoder.test.js"
   },
   "repository": {
     "type": "git",

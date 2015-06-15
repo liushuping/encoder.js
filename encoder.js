@@ -4,7 +4,7 @@ function Encoder() {
 Encoder.prototype.encodeHTML = function(str) {
     var encoded = '';
 
-    if (str === undefined || str.length == 0) {
+    if (str === undefined || str.length === 0) {
         return encoded;
     }
 
@@ -21,7 +21,7 @@ Encoder.prototype.encodeHTML = function(str) {
 Encoder.prototype.decodeHTML = function(str) {
     var decoded = '';
 
-    if (str === undefined || str.length == 0) {
+    if (str === undefined || str.length === 0) {
         return encoded;
     }
 
@@ -59,7 +59,7 @@ Encoder.prototype.decodeURIComponent = function(str) {
     return decodeURIComponent(str);
 };
 
-Encoder.protoytpe.encodeXML = function(str) {
+Encoder.prototype.encodeXML = function(str) {
     //TODO
 };
 
@@ -67,5 +67,12 @@ Encoder.prototype.decodeXML = function(str) {
     //TODO
 };
 
+Encoder.prototype.encodeJSON = function(str) {
+    //TODO
+};
 
-global.exports = new Encoder();
+Encoder.prototype.decodeJSON = function(str) {
+    //TODO
+};
+
+module.exports = new Encoder();
