@@ -21,8 +21,15 @@ var decoded = encoder.decodeHTML(input); //100 > 200 is incorrect
 ```
 
 ## HTML attribute encode and decode
-HTML attribute encode an input string
+HTML attribute encode an input string, this method only encode 4 characters: `&`, `<`, `'` and `"`
 ```
+var encoder = require('encoder.js');
+var input = '100<200';
+var encoded = encoder.encodeHTMLAttr(input); //100&lt;200
+
+// but '>' will be not encoded
+input = '200>100';
+encoded = encoder.encodeHTMLAttr(input); //200>100
 ```
 to decode HTML attribute, use `encoder.decodeHTML`
 
