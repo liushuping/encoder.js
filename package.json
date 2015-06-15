@@ -1,6 +1,6 @@
 {
   "name": "encoder.js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An encoding library in JavaScript",
   "main": "encoder.js",
   "scripts": {
