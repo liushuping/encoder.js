@@ -22,5 +22,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/liushuping/encoder.js/issues"
+  },
+  "devDependencies": {
+    "mocha": "*"
   }
 }
