@@ -8,14 +8,14 @@ HTML encode an input string
 ```
 var encoder = require('encoder.js');
 var input = '100 > 200 is incorrect';
-var encoded = encoder.encodeHTML(input); //100 &gt; 200 is incorrect
+var encoded = encoder.encodeHTML(input); //100&nbsp;&gt;&nbsp;200&nbsp;is&nbsp;incorrect
 ```
 
 HTML decode an input string
 ```
 var encoder = require('encoder.js');
 var intput = '100 &gt; 200 is incorrect';
-var decoded = encoder.decodeHTML(input); // 100 > 200 is incorrect
+var decoded = encoder.decodeHTML(input); //100 > 200 is incorrect
 ```
 
 ## HTML attribute encode and decode
@@ -24,7 +24,20 @@ var decoded = encoder.decodeHTML(input); // 100 > 200 is incorrect
 
 ## XML encode and decode
 
-## URI endode and decode
+## URI encode and decode
+URI encode an input string
+```
+var encoder = require('./encoder.js');
+var input = 'http://www.example.com/abc 123';
+var encoded = encoder.encodeURI(input); //http://www.example.com/abc%20123
+```
+
+URI decode an input string
+```
+var encoder = require('./encoder.js');
+var input = 'http://www.example.com/abc%20123';
+var decoded = encoder.decodeURI(input); //http://www.example.com/abc 123
+```
 
 ## Test
 Make sure `mocha` is installed globally
