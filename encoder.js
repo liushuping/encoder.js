@@ -41,8 +41,39 @@ Encoder.prototype.encodeHTMLAttr = function(str) {
     return encoded;
 };
 
+function dec2hex(i)
+{
+    var val = i.toString(16);
+    if (i >= 0 && i <= 15)    { return "000" + val; }
+    else if (i >= 16   && i <= 255)   { return "00"  + val; }
+    else if (i >= 256  && i <= 4095)  { return "0"   + val; }
+    else if (i >= 4096 && i <= 65535) { return val; }
+}
+
 Encoder.prototype.encodeJavaScript = function(str) {
-    //TODO
+    function convert(c) {
+         var code = String.charCodeAt(c);
+         switch (c) {
+              case '\r': return '\\r';
+              case '\t': return '\\t';
+              case '\"': return '\\\"';
+              case '\\': return '\\\\';
+              case '\n': return '\\n';
+              case '\b': return '\\b';
+              case '\f': return '\\f';
+              case 133: return '\\u0085';
+              case 8232: return '\\u2028';
+              case 8233: return '\\u2029';
+              default:
+                    if (code >= 0x20) return c;
+                    return dex2hex(c);
+        }
+    }
+
+    var i, encoded = '';
+    for (i = 0; i < str.length; ++i) {
+        encoded += convert(str[i]);
+    }
 };
 
 Encoder.prototype.decodeJavaScript = function(str) {
