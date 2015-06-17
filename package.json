@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "mocha": "*"
+  },
+  "dependencies": {
+    "ddt": "^0.1.0"
   }
 }
