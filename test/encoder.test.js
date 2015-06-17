@@ -115,6 +115,15 @@ describe('#encodeHTMLAttr', function() {
 	});
 });
 
+describe('xmlEncode', function() {
+	it('should encode \' to &apos;.', function() {
+		var input = '\'',
+			encoded = encoder.xmlEncode(input);
+
+		assert.strictEqual(encoded, '&apos;');
+	});
+});
+
 describe('#encodeURI', function() {
 	it('should encode white space to %20', function() {
 		var input = 'http://www.example.com/abc 123';

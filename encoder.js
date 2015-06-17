@@ -106,11 +106,12 @@ Encoder.prototype.decodeURIComponent = function(str) {
   return decodeURIComponent(str);
 };
 
-Encoder.prototype.encodeXML = function(str) {
-  //TODO
+Encoder.prototype.xmlEncode = function(str) {
+  var encoded = this.encodeHTML(str);
+  return encoded.replace(/&#39;/g, '&apos;');
 };
 
-Encoder.prototype.decodeXML = function(str) {
+Encoder.prototype.xmlDecode = function(str) {
   //TODO
 };
 

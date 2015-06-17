@@ -51,6 +51,11 @@ var encoded = encoder.encodeJavaScript(input); //\u0085\u2028\u2029
 ```
 
 ## XML encode and decode
+XML encode has the same behavior as HTML encode except XML encode converts `'` into `&apos;`
+```javascript
+var input = '\'';
+var encoded = encoder.xmlEncode(input); //&apos;
+```
 
 ## URI encode and decode
 URI encode an input string
