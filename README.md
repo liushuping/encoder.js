@@ -67,6 +67,18 @@ var input = 'http://www.example.com/abc%20123';
 var decoded = encoder.decodeURI(input); //http://www.example.com/abc 123
 ```
 
+## Base64 encode and decode
+Base64 encode a string
+```javascript
+var input = 'Hello World!';
+var encoded = encoder.base64Encode(input); //"SGVsbG8gV29ybGQh"
+```
+Decode a base64 string
+```javascript
+var input = 'SGVsbG8gV29ybGQh';
+var encoded = encoder.base64Decode(input); //"Hello World!"
+```
+
 ## Test
 Make sure `mocha` is installed globally
 ```
