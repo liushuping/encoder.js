@@ -34,6 +34,21 @@ encoded = encoder.encodeHTMLAttr(input); //200>100
 to decode HTML attribute, use `encoder.decodeHTML`
 
 ## JavaScript encode and decode
+Characters `'\r\t"\n\b\f'` will be escaped to `'\\r\\t\\"\\n\\b\\f'`
+```
+var input = '\r\t"\n\b\f';
+var encoded = encoder.encodeJavaScript(input); //\r\t\"\n\b\f
+```
+Any control character (code < 0x20) will be encoded
+```
+var input = String.fromCharCode(0) + String.fromCharCode(16) + String.fromCharCode(31);
+var encoded = encoder.encodeJavaScript(input); //\u0000\u0010\u001f
+```
+Characters #133, #8232 and #8233 will be encoded
+```
+var input = String.fromCharCode(133) + String.fromCharCode(8232) + String.fromCharCode(8233);
+var encoded = encoder.encodeJavaScript(input); //\u0085\u2028\u2029
+```
 
 ## XML encode and decode
 
