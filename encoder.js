@@ -90,10 +90,6 @@ Encoder.prototype.encodeJavaScript = function(str) {
   return encoded;
 };
 
-Encoder.prototype.decodeJavaScript = function(str) {
-  //TODO
-}
-
 Encoder.prototype.encodeURI = function(str) {
   return encodeURI(str);
 };
@@ -143,11 +139,13 @@ Encoder.prototype.quotedDecode = function(str) {
 };
 
 Encoder.prototype.base64Encode = function(str) {
-
+  if (global.btoa instanceof Function) return btoa(str);
+  if (global.Buffer instanceof Function) return new Buffer(str).toString('base64');
 };
 
 Encoder.prototype.base64Decode = function(str) {
-
+  if (global.atob instanceof Function) return atob(str);
+  if (global.Buffer instanceof Function) return new Buffer(str, 'base64').toString();
 };
 
 module.exports = new Encoder();

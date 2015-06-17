@@ -188,3 +188,21 @@ describe('#encodeJavaScript', function() {
 		assert.strictEqual(encoded, ' ');
 	})
 });
+
+describe('#base64Encode', function() {
+	it('should encode text to base64 string.', function() {
+		var input = 'Hello World!',
+			encoded = encoder.base64Encode(input);
+
+		assert.strictEqual(encoded, "SGVsbG8gV29ybGQh");
+	});
+});
+
+describe('#base64Decode', function() {
+	it('should decode base64 string to text.', function() {
+		var input = 'SGVsbG8gV29ybGQh',
+			encoded = encoder.base64Decode(input);
+
+		assert.strictEqual(encoded, "Hello World!");
+	});
+});
