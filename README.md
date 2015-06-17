@@ -30,8 +30,8 @@ var encoded = encoder.encodeHTMLAttr(input); //100&lt;200
 // but '>' will be not encoded
 input = '200>100';
 encoded = encoder.encodeHTMLAttr(input); //200>100
-```javascript
-to decode HTML attribute, use `encoder.decodeHTML`
+```
+To decode HTML attribute, use `encoder.decodeHTML`
 
 ## JavaScript encode and decode
 Characters `'\r\t"\n\b\f'` will be escaped to `'\\r\\t\\"\\n\\b\\f'`
