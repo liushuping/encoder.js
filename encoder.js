@@ -40,36 +40,35 @@ Encoder.prototype.encodeHTMLAttr = function(str) {
   return encoded;
 };
 
-function dec2hex(i) {
-  var val = i.toString(16);
-  if (i >= 0 && i <= 15) {
-    return "000" + val;
-  } else if (i >= 16 && i <= 255) {
-    return "00" + val;
-  } else if (i >= 256 && i <= 4095) {
-    return "0" + val;
-  } else if (i >= 4096 && i <= 65535) {
-    return val;
-  }
-}
-
 Encoder.prototype.encodeJavaScript = function(str) {
-  function convert(c) {
-    var code = String.charCodeAt(c);
-    switch (c) {
-      case '\r':
+  function dec2hex(i) {
+    var val = i.toString(16);
+    if (i >= 0 && i <= 15) {
+      return "\\u000" + val;
+    } else if (i >= 16 && i <= 255) {
+      return "\\u00" + val;
+    } else if (i >= 256 && i <= 4095) {
+      return "\\u0" + val;
+    } else if (i >= 4096 && i <= 65535) {
+      return "\\u" + val;
+    }
+  }
+
+  function convert(c, code) {
+    switch (code) {
+      case 13:
         return '\\r';
-      case '\t':
+      case 9:
         return '\\t';
-      case '\"':
+      case 34:
         return '\\\"';
-      case '\\':
+      case 92:
         return '\\\\';
-      case '\n':
+      case 10:
         return '\\n';
-      case '\b':
+      case 8:
         return '\\b';
-      case '\f':
+      case 12:
         return '\\f';
       case 133:
         return '\\u0085';
@@ -79,14 +78,16 @@ Encoder.prototype.encodeJavaScript = function(str) {
         return '\\u2029';
       default:
         if (code >= 0x20) return c;
-        return dex2hex(c);
+        return dec2hex(code);
     }
   }
 
   var i, encoded = '';
   for (i = 0; i < str.length; ++i) {
-    encoded += convert(str[i]);
+    encoded += convert(str[i], str.charCodeAt(i));
   }
+
+  return encoded;
 };
 
 Encoder.prototype.decodeJavaScript = function(str) {

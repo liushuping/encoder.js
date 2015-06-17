@@ -115,7 +115,6 @@ describe('#encodeHTMLAttr', function() {
 	});
 });
 
-
 describe('#encodeURI', function() {
 	it('should encode white space to %20', function() {
 		var input = 'http://www.example.com/abc 123';
@@ -158,4 +157,34 @@ describe('#decodeURIComponent', function() {
 		var decoded = encoder.decodeURIComponent(input);
 		assert.strictEqual(decoded, '//');
 	});
+});
+
+describe('#encodeJavaScript', function() {
+	it('should escape special characters.', function() {
+		var input = '\r\t"\n\b\f',
+			encoded = encoder.encodeJavaScript(input);
+
+		assert.strictEqual(encoded, '\\r\\t\\"\\n\\b\\f');
+	});
+
+	it('should encode character #133, #8232 and #8233.', function() {
+		var input = String.fromCharCode(133) + String.fromCharCode(8232) + String.fromCharCode(8233),
+			encoded = encoder.encodeJavaScript(input);
+
+		assert.strictEqual(encoded, '\\u0085\\u2028\\u2029');
+	});
+
+	it('should encode any control chracter.', function() {
+		var input = String.fromCharCode(0) + String.fromCharCode(16) + String.fromCharCode(31),
+			encoded = encoder.encodeJavaScript(input);
+
+		assert.strictEqual(encoded, '\\u0000\\u0010\\u001f');
+	});
+
+	it('should not encode non-control characters.', function() {
+		var input = String.fromCharCode(32),
+			encoded = encoder.encodeJavaScript(input);
+
+		assert.strictEqual(encoded, ' ');
+	})
 });
